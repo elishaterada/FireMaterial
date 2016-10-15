@@ -1,16 +1,18 @@
-/* global _ */
+/* global _ moment firebase*/
 
 angular
   .module('app', [
     'ngAnimate',
     'ngMaterial',
     'ngAria',
-    'ui.router'
+    'ui.router',
+    'firebase'
   ])
   .controller('AppCtrl', AppCtrl)
   .config(config)
   .run(run)
   .constant('_', _)
+  .constant('moment', moment)
 
 function config (
   $animateProvider,
@@ -64,7 +66,12 @@ function config (
   // Landing
     .state('landing', {
       url: '',
-      component: 'landing'
+      component: 'landing',
+      resolve: {
+        user: function (Auth) {
+          return Auth.$waitForSignIn()
+        }
+      }
     })
 
     // Not Found
@@ -75,76 +82,33 @@ function config (
 }
 
 function run () {
+  var config = {
+    apiKey: '...',
+    authDomain: '{projectKey}.firebaseapp.com',
+    databaseURL: 'https://{projectKey}.firebaseio.com',
+    storageBucket: '{projectKey}.appspot.com'
+  }
+
+  firebase.initializeApp(config)
 }
 
 function AppCtrl () {
 }
 
-//  Main Component
+// Auth Factory
 angular
   .module('app')
-  .component('main', {
-    templateUrl: 'src/templates/main.tpl.html',
-    controller: MainCtrl
-  })
+  .factory('Auth', Auth)
 
-function MainCtrl ($mdSidenav, $timeout) {
-  var ctrl = this
-
-  ctrl.toggleLeftNav = buildDelayedToggler('leftNav')
-
-  ctrl.$onInit = function () {
-    // Functions to run on init
-  }
-
-  function debounce (func, wait, context) {
-    var timer
-
-    return function debounced () {
-      var context = this
-      var args = Array.prototype.slice.call(arguments)
-      $timeout.cancel(timer)
-      timer = $timeout(function () {
-        timer = undefined
-        func.apply(context, args)
-      }, wait || 10)
-    }
-  }
-
-  function buildDelayedToggler (navID) {
-    return debounce(function () {
-      $mdSidenav(navID)
-        .toggle()
-    }, 200)
-  }
+function Auth ($firebaseAuth) {
+  return $firebaseAuth()
 }
 
-// Landing Component
+// Profiles
 angular
   .module('app')
-  .component('landing', {
-    templateUrl: 'src/templates/landing.tpl.html',
-    controller: LandingCtrl
-  })
+  .factory('Profiles', Profiles)
 
-function LandingCtrl () {
-  var ctrl = this
-
-  ctrl.$onInit = function () {
-  }
-}
-
-// Notfound Component
-angular
-  .module('app')
-  .component('notFound', {
-    templateUrl: 'src/templates/not-found.tpl.html',
-    controller: NotFoundCtrl
-  })
-
-function NotFoundCtrl () {
-  var ctrl = this
-
-  ctrl.$onInit = function () {
-  }
+function Profiles () {
+  return firebase.database().ref('profiles')
 }

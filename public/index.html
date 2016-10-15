@@ -3,10 +3,10 @@
 <head>
   <title>App Title Placeholder</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="src/styles/meyer-reset.css">
+  <link rel="stylesheet" href="styles/meyer-reset.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="src/styles/style.css">
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 <body class="body" layout="row" ng-cloak>
 
@@ -26,9 +26,15 @@
 
   <!-- Other Vendor Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
 
   <!-- Main App -->
-  <script src="src/app/app.js"></script>
+  <script src="app.js"></script>
+  <script src="components/main.js"></script>
+  <script src="components/landing.js"></script>
+  <script src="components/not-found.js"></script>
 
 </body>
 </html>
