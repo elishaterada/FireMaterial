@@ -4,7 +4,7 @@
   "description": "App Description Placeholder",
   "main": "/public/index.html",
   "scripts": {
-    "test": "eslint src/app/app.js",
+    "test": "eslint public/app.js",
     "dev": "node server.js"
   },
   "author": "Elisha Terada",
