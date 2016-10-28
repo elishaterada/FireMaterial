@@ -1,5 +1,3 @@
-/* global _ moment firebase*/
-
 angular
   .module('app', [
     'ngAnimate',

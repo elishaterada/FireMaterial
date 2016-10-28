@@ -7,6 +7,7 @@
   "globals": {
     "angular": true,
     "_": true,
+    "moment": true,
     "firebase": true
   }
 }
