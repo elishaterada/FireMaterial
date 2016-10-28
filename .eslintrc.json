@@ -6,6 +6,7 @@
   ],
   "globals": {
     "angular": true,
-    "_": true
+    "_": true,
+    "firebase": true
   }
 }
