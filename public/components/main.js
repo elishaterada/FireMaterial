@@ -41,7 +41,7 @@ function MainCtrl ($mdSidenav, $timeout, $log, $state, Auth, $firebaseObject) {
         firebase.database().ref('profiles').child(firebaseUser.uid)
       )
 
-      ctrl.user.$loaded(function() {
+      ctrl.user.$loaded(function () {
         // Save current user profile
         ctrl.user.displayName = firebaseUser.displayName
         ctrl.user.email = firebaseUser.email
@@ -49,7 +49,6 @@ function MainCtrl ($mdSidenav, $timeout, $log, $state, Auth, $firebaseObject) {
 
         ctrl.user.$save()
       })
-
     })
   }
 

@@ -23,7 +23,6 @@ function config (
   $animateProvider.classNameFilter(/^(?:(?!ng-animate-disabled).)*$/)
 
   // Angular Material Setup
-  // Angular Material Setup
   $mdThemingProvider.definePalette('customPalette', {
     '50': 'E1F5FE',
     '100': 'B3E5FC',
