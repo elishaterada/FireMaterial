@@ -8,12 +8,6 @@
 * Yarn: [Install Yarn](https://yarnpkg.com/en/docs/install)
 * Firebase: [Setup Account & Project](https://console.firebase.google.com/)
 
-## Base Setup
-
-* Install packages: `yarn`
-* Develop: `npm run dev`
-* Test: `npm test`
-
 ## Firebase Setup
 
 * Create Firebase project
@@ -22,11 +16,17 @@
 * Update config data on `firebase.initializeApp(config)` in `public/app.js`
 * Review `database.rules.json`
 
+## Developmemt Setup
+
+* Install packages: `yarn`
+* Develop: `npm run dev`
+* Test: `npm test`
+
 ## Firebase Deploy
 
 * Install firebase tool `npm install -g firebase-tools`
 * Login `firebase login`
-* Deployg `firebase deploy`
+* Deploy `firebase deploy`
 
 ## Resources
 
