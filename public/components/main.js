@@ -38,7 +38,7 @@ function MainCtrl ($mdSidenav, $timeout, $log, $state, Auth, $firebaseObject) {
     Auth.$onAuthStateChanged(function (firebaseUser) {
       if (firebaseUser) {
         ctrl.user = $firebaseObject(
-          firebase.database().ref('profiles').child(firebaseUser.uid)
+          firebase.database().ref('profiles/' + firebaseUser.uid)
         )
 
         ctrl.user.$loaded(function () {

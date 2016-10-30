@@ -71,7 +71,12 @@ function config (
   // Landing
     .state('landing', {
       url: '/',
-      component: 'landing'
+      component: 'landing',
+      resolve: {
+        user: function (Auth) {
+          return Auth.$waitForSignIn()
+        }
+      }
     })
 
     // Not Found
