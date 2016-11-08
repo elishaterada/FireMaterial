@@ -8,13 +8,11 @@ angular
     }
   })
 
-function LandingCtrl (Profiles, $firebaseObject, $firebaseArray) {
+function LandingCtrl (FireDB) {
   var ctrl = this
 
   ctrl.$onInit = function () {
-    ctrl.profiles = $firebaseArray(Profiles)
-    ctrl.profile = $firebaseObject(
-      firebase.database().ref('profiles/' + ctrl.user.uid)
-    )
+    ctrl.profiles = FireDB.getArray('profiles')
+    ctrl.profile = FireDB.getObject('profiles/' + ctrl.user.uid)
   }
 }

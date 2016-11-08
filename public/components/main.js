@@ -5,7 +5,7 @@ angular
     controller: MainCtrl
   })
 
-function MainCtrl ($mdSidenav, $timeout, $log, $state, Auth, $firebaseObject) {
+function MainCtrl ($mdSidenav, $timeout, $log, $state, Auth, FireDB) {
   var ctrl = this
 
   ctrl.toggleLeftNav = buildDelayedToggler('leftNav')
@@ -37,14 +37,11 @@ function MainCtrl ($mdSidenav, $timeout, $log, $state, Auth, $firebaseObject) {
   function firebaseAuth () {
     Auth.$onAuthStateChanged(function (firebaseUser) {
       if (firebaseUser) {
-        ctrl.user = $firebaseObject(
-          firebase.database().ref('profiles/' + firebaseUser.uid)
-        )
+        ctrl.user = FireDB.getObject('profiles/' + firebaseUser.uid)
 
         ctrl.user.$loaded(function () {
           // Save current user profile
           ctrl.user.displayName = firebaseUser.displayName
-          ctrl.user.email = firebaseUser.email
           ctrl.user.photoURL = firebaseUser.photoURL
 
           ctrl.user.$save()

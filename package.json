@@ -5,6 +5,7 @@
   "main": "/public/index.html",
   "scripts": {
     "test": "eslint public/app.js public/components/*.js",
+    "fix": "eslint public/app.js public/components/*.js --fix",
     "dev": "node server.js"
   },
   "author": "Elisha Terada",

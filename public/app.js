@@ -109,11 +109,26 @@ function Auth ($firebaseAuth) {
   return $firebaseAuth()
 }
 
-// Profiles
+// Firebase Object / Array Wrapper
 angular
   .module('app')
-  .factory('Profiles', Profiles)
+  .factory('FireDB', FireDB)
 
-function Profiles () {
-  return firebase.database().ref('profiles')
+function FireDB ($firebaseArray, $firebaseObject) {
+  return {
+    getArray: getArray,
+    getObject: getObject
+  }
+
+  function getArray (ref) {
+    return $firebaseArray(
+      firebase.database().ref(ref)
+    )
+  }
+
+  function getObject (ref) {
+    return $firebaseObject(
+      firebase.database().ref(ref)
+    )
+  }
 }
