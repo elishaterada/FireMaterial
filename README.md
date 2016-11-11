@@ -12,7 +12,7 @@
 
 * Create Firebase project
 * Enable Google sign-in
-* Update default project name in `.firebaserc`
+* Update default project ID (not name) in `.firebaserc`
 * Update config data on `firebase.initializeApp(config)` in `public/app.js`
 * Review `database.rules.json`
 
